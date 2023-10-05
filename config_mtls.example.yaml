@@ -1,0 +1,13 @@
+---
+  auth_token_issuer: https://auth.example.com
+  auth_token_audience: "example"
+  log_level: INFO
+  keystore_path: keystore.jwks
+  signing_key_id: example_202201
+  auth_flows:
+   - TLSFEDFlow
+   - ConfigFlow
+  tls_fed_metadata:
+   - remote: https://federation.example.com/remote.jws
+     jwks: local.jwks
+     strict: false

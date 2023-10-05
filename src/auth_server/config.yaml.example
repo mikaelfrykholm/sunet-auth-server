@@ -1,0 +1,43 @@
+---
+auth_token_issuer: https://auth.example.com
+auth_token_expires_in: PT1H
+log_level: DEBUG
+keystore_path: "keystore.jwks"
+mongo_uri: mongodb://auth_server:super_secret_password
+pysaml2_config_path: "saml2_settings.py"
+saml2_discovery_service_url: https://ds.qa.swamid.se/ds
+auth_flows:
+- TLSFEDFlow
+- ConfigFlow
+- InteractionFlow
+- TestFlow
+tls_fed_metadata:
+- remote: https://federation.example.com/remote.jws
+  jwks: "local.jwks"
+  strict: false
+client_keys:
+  my_client_1:
+    proof:
+      method: mtls
+    cert_S256: gibberish=
+    claims:
+      scopes:
+      - scope1.example.com
+      - scope2.example.com
+      test_key: test_value
+      test_key2: true
+      test_key3: 3
+      test_key4:
+      - test_key4_item1
+      - test_key4_item2
+  my_client_2:
+    proof:
+      method: mtls
+    cert_S256: gibberish=
+    claims:
+      test_key: test_value
+      test_key2: true
+      test_key3: 3
+      test_key4:
+      - test_key4_item1
+      - test_key4_item2
